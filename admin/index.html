@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yönetim Paneli — Florence Event Design</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../Logo/florence-event-design-logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ============ LOGIN EKRANI ============ -->
+  <div id="loginScreen" class="login-screen">
+    <form id="loginForm" class="login-card">
+      <img src="../Logo/florence-event-design-logo.svg" alt="Florence Event Design" class="login-logo">
+      <h1>Yönetim Paneli</h1>
+      <p class="login-sub">Fotoğrafları ve metinleri buradan güncelleyebilirsiniz.</p>
+      <label>Kullanıcı Adı
+        <input type="text" id="loginUsername" name="username" autocomplete="username" required>
+      </label>
+      <label>Şifre
+        <input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
+      </label>
+      <button type="submit" class="btn-primary">Giriş Yap</button>
+      <p id="loginError" class="error-text" hidden></p>
+    </form>
+  </div>
+
+  <!-- ============ PANEL ============ -->
+  <div id="panelScreen" class="panel-screen" hidden>
+    <header class="panel-header">
+      <div class="panel-header-brand">
+        <img src="../Logo/florence-event-design-logo.svg" alt="Florence Event Design">
+        <span>Yönetim Paneli</span>
+      </div>
+      <div class="panel-header-actions">
+        <div class="lang-toggle" id="langToggle">
+          <button type="button" data-lang="tr" class="is-active">TR</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+        <a href="../index.html" target="_blank" rel="noopener" class="btn-ghost">Siteyi Görüntüle ↗</a>
+        <button type="button" id="changePasswordBtn" class="btn-ghost">Şifre Değiştir</button>
+        <button type="button" id="logoutBtn" class="btn-ghost">Çıkış Yap</button>
+      </div>
+    </header>
+
+    <nav class="tab-row">
+      <button type="button" class="tab-btn is-active" data-tab="texts">Metinler</button>
+      <button type="button" class="tab-btn" data-tab="images">Fotoğraflar</button>
+    </nav>
+
+    <main class="panel-main">
+      <div id="statusBanner" class="status-banner" hidden></div>
+
+      <section id="textsTab" class="tab-panel">
+        <div id="textsSections"></div>
+      </section>
+
+      <section id="imagesTab" class="tab-panel" hidden>
+        <div id="imagesSections"></div>
+      </section>
+    </main>
+
+    <div class="save-bar">
+      <span id="saveHint" class="save-hint">Değişiklikleri yayınlamak için kaydedin.</span>
+      <button type="button" id="saveBtn" class="btn-primary">Kaydet ve Yayınla</button>
+    </div>
+  </div>
+
+  <!-- ============ ŞİFRE DEĞİŞTİR MODAL ============ -->
+  <div id="passwordModal" class="modal-overlay" hidden>
+    <form id="passwordForm" class="modal-card">
+      <h2>Şifre Değiştir</h2>
+      <label>Mevcut Şifre
+        <input type="password" id="currentPassword" required>
+      </label>
+      <label>Yeni Şifre (en az 8 karakter)
+        <input type="password" id="newPassword" minlength="8" required>
+      </label>
+      <p id="passwordError" class="error-text" hidden></p>
+      <div class="modal-actions">
+        <button type="button" id="passwordCancelBtn" class="btn-ghost">Vazgeç</button>
+        <button type="submit" class="btn-primary">Şifreyi Güncelle</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

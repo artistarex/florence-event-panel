@@ -1,0 +1,16 @@
+{
+  "name": "florence-event-admin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Florence Event Design - statik site + icerik yonetim paneli (admin).",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "apn": "^2.2.0",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "multer": "^2.0.0"
+  }
+}
