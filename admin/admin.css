@@ -14,6 +14,13 @@
   --radius-lg:20px;
 }
 *{ box-sizing:border-box; }
+/* Genel kural: "hidden" özniteliği taşıyan HERHANGİ bir eleman, altındaki
+   display:flex/grid kurallarına bakılmaksızın gizlensin. Bunu tek tek her
+   ekran/kutu için ayrı ayrı yazmak yerine burada bir kere ve kesin şekilde
+   (!important) tanımlıyoruz — login/panel ekranları arasındaki geçişin
+   görünürlük hatasına (öğe JS ile hidden yapılsa da CSS'in yine de
+   display:flex ile göstermesi) tekrar düşmemek için. */
+[hidden]{ display:none !important; }
 body{
   margin:0; background:var(--cream); color:var(--ink);
   font-family:'Jost', sans-serif; font-weight:300; line-height:1.5;
