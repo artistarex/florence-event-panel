@@ -152,6 +152,7 @@ input, textarea, button{ font-family:inherit; font-size:14px; }
   position:fixed; inset:0; background:rgba(34,28,21,.5); display:flex; align-items:center; justify-content:center;
   padding:20px; z-index:50;
 }
+.modal-overlay[hidden]{ display:none; }
 .modal-card{
   background:var(--white); border-radius:var(--radius-lg); padding:28px; width:100%; max-width:360px;
   display:flex; flex-direction:column; gap:14px;
