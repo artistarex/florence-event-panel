@@ -37,14 +37,12 @@ canlı olarak nasıl kullanırım?" bölümü).
    (Not: bu adreste site değil, sadece panel görünür — site her zaman
    Cloudflare Pages adresinizden açılır.)
 
-## Giriş bilgileri (varsayılan — MUTLAKA DEĞİŞTİRİN)
+## Giriş bilgileri
 
-- Kullanıcı adı: `florence`
-- Şifre: `FlorenceEvent2026!`
-
-Panele ilk girdiğinizde sağ üstteki **"Şifre Değiştir"** butonuyla şifrenizi
-hemen kendi belirleyeceğiniz bir şifreyle değiştirin. Varsayılan şifre bu
-belgede yazılı olduğu için güvenli değildir.
+Kullanıcı adı ve şifre `admin-config.json` dosyasında (bu depoda değil,
+Render'ın Secret Files'ında) tanımlı. İlk kurulumda panelden **"Şifre
+Değiştir"** ile kendi şifrenizi belirlediyseniz onu kullanın. Giriş
+bilgilerini bu dosyaya asla düz metin olarak yazmayın — bu depo public.
 
 ## Panelde neler var?
 

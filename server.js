@@ -8,7 +8,7 @@
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
-const session = require("express-session");
+const cookieSession = require("cookie-session");
 const multer = require("multer");
 const bcrypt = require("bcryptjs");
 const apn = require("apn");
@@ -30,12 +30,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json({ limit: "5mb" }));
+/* Oturum verisi (sadece "girdi mi" bilgisi) imzali bir cerezde tutulur —
+   sunucu hafizasinda (MemoryStore) TUTULMAZ. Render gibi platformlarda
+   sunucu surecinin herhangi bir yeniden baslatmasi (deploy, uyku/uyanma)
+   hafizadaki oturumlari sifirlardi; cerez tabanli oturum bu yeniden
+   baslatmalara karsi dayanikli, kullanici tekrar giris yapmak zorunda
+   kalmiyor. */
 app.use(
-  session({
+  cookieSession({
+    name: "fed_session",
     secret: config.sessionSecret || "florence-event-fallback-secret-change-me",
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 8 } // 8 saat
+    maxAge: 1000 * 60 * 60 * 8 // 8 saat
   })
 );
 
@@ -62,7 +67,8 @@ app.post("/api/login", (req, res) => {
 });
 
 app.post("/api/logout", (req, res) => {
-  req.session.destroy(() => res.json({ ok: true }));
+  req.session = null; // cookie-session: oturumu sonlandirmanin yolu bu
+  res.json({ ok: true });
 });
 
 app.get("/api/session", (req, res) => {
